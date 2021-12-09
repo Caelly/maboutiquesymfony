@@ -3,13 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v4.1.1">
-    <title>{% block title %}Ma boutique Symfony{% endblock %}</title>
+    <meta name="description" content="La boutique pour le projet Symfony">
+    <title>{% block title %} Ma boutique {% endblock %}</title>
 
     <!-- Bootstrap core CSS -->
-    <link href={{ asset('assets/css/bootstrap.min.css') }} rel="stylesheet">
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/boutique.css') }}" rel="stylesheet">
 
     <style>
         .bd-placeholder-img {
@@ -20,7 +19,6 @@
             -ms-user-select: none;
             user-select: none;
         }
-
         @media (min-width: 768px) {
             .bd-placeholder-img-lg {
                 font-size: 3.5rem;
@@ -28,27 +26,34 @@
         }
     </style>
     <!-- Custom styles for this template -->
-    <link href={{ asset('assets/css/carousel.css') }} rel="stylesheet">
+    <link href="{{ asset('assets/css/carousel.css') }}" rel="stylesheet">
 </head>
 <body>
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">Ma boutique</a>
+        <a class="navbar-brand" href="{{ path('home') }}">Ma boutique</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#">Nos produits</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Qui sommes-nous ?</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Contact</a>
                 </li>
             </ul>
-            {% if app.user %}
-            <a href="{{ path('account') }}">Mon compte </a> | <a href="{{ path('app_logout') }}"> Déconnexion</a>
-            {% else %}
-            <a href="{{ path('app_login') }}">Connexion </a> | <a href="{{ path('register') }}"> Inscription</a>
-            {% endif %}
-          
+            <div class="navbar-item-custom">
+                {% if app.user %}
+                <a href="{{ path('account') }}">Mon compte <small>({{ app.user.firstname }})</small></a> | <a href="{{ path('app_logout') }}">Déconnexion</a>
+                {% else %}
+                <a href="{{ path('app_login') }}">Connexion</a> | <a href="{{ path('register') }}">Inscription</a>
+                {% endif %}
+            </div>
         </div>
     </nav>
 </header>
@@ -108,20 +113,24 @@
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
-    <div class="container marketing {% if block('carousel') is not defined %} mt-5 {% endif %}">
+    <div class="container marketing {% if block('carousel') is not defined %} mt-5 {% endif %} ">
 
-        {% block content %}
-        {% endblock %}
+    {% block content %}
+
+
+    {% endblock %}
 
     </div><!-- /.container -->
 
     <!-- FOOTER -->
-    <footer class="container">
-        <p class="float-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2017-2020 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    <footer class="footer-custom">
+        <p>
+            &copy; 2021 - Ma boutique Symfony<br>
+            <small>La boutique 100% made in WebForce3<br>
+            <a href="#">Utilisation des données personnelles</a> &middot; <a href="#">Conditions d'utilisation</a></small></p>
     </footer>
 </main>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src={{ asset('assets/js/bootstrap.bundle.js') }}></script>
+<script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>
 </body>
 </html>

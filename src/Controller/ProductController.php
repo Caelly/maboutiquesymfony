@@ -26,4 +26,23 @@ class ProductController extends AbstractController
             'products' => $products
         ]);
     }
+
+    /**
+     * @Route("/produit/{slug}", name="product")
+     */
+    public function show($slug): Response
+    {
+        $product = $this->entityManager->getRepository(Product::class)->findOneBySlug($slug);
+        if(!$product)
+        {
+            return $this->redirectToRoute('products');
+        }
+        else
+        {
+            return $this->render('product/show.html.twig', [
+                'product' => $product
+            ]);
+        }
+    }
+
 }

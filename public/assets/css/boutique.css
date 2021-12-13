@@ -6,8 +6,7 @@
 .footer-custom
 {
     text-align:center;
-    position:fixed;
-    bottom:0;
+    position:absolute;
     width:100%;
     background-color:#DFEAFF;
     padding-top:25px;

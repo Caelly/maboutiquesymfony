@@ -3,6 +3,12 @@
     color:White;
 }
 
+.cart-icon
+{
+    height:28px;
+    padding-left:20px;
+}
+
 .footer-custom
 {
     text-align:center;
